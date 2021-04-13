@@ -31,4 +31,5 @@ namespace WebApplication1.Models
                 .Property(b => b.Description)
                 .HasDefaultValue("Description was not provided for this category.");
         }
+    }
 }
