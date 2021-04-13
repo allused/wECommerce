@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using wECommerce.Models.Store;
 
 namespace WebApplication1.Models
 {
@@ -27,9 +28,14 @@ namespace WebApplication1.Models
             modelBuilder.Entity<Product>()
                 .Property(b => b.IsOnSale)
                 .HasDefaultValue(false);
+
             modelBuilder.Entity<Category>()
                 .Property(b => b.Description)
                 .HasDefaultValue("Description was not provided for this category.");
+
+            modelBuilder.Entity<CartItem>()
+                .Property(b => b.Quantity)
+                .HasDefaultValue();
         }
     }
 }
