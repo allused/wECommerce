@@ -45,6 +45,9 @@ namespace WebApplication1.Models
             modelBuilder.Entity<Order>()
                 .Property(b => b.IsPayed)
                 .HasDefaultValue(false);
+            modelBuilder.Entity<Order>()
+                .Property(b => b.TotalPrice)
+                .HasDefaultValue(0);
         }
     }
 }
