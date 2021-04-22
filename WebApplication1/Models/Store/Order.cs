@@ -11,6 +11,7 @@ namespace wECommerce.Models.Store
         public List<CartItem> CartItems { get; set; }
         public Customer Customer { get; set; }
         public decimal TotalPrice { get; set; }
+        public bool IsPayed { get; set; }
 
     }
 }
