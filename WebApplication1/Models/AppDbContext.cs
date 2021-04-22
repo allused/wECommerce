@@ -41,6 +41,10 @@ namespace WebApplication1.Models
             modelBuilder.Entity<CartItem>()
                 .Property(b => b.CreatedAt)
                 .HasDefaultValueSql("getdate()");
+
+            modelBuilder.Entity<Order>()
+                .Property(b => b.IsPayed)
+                .HasDefaultValue(false);
         }
     }
 }
