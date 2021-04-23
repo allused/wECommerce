@@ -52,10 +52,12 @@ namespace WebApplication1
                 }).AddJwtBearer(options => {
                     options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
                     {
-                        ValidateIssuer = false,
-                        ValidateAudience = false,
+                        ValidateIssuer = true,
+                        ValidateAudience = true,
+                        ValidIssuer = Configuration["AuthSettings:Issuer"],
+                        ValidAudience = Configuration["AuthSettings:Audience"],
                         RequireExpirationTime = true,
-                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("The key for meine tokene ja")),
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["AuthSettings:Key"])),
                         ValidateIssuerSigningKey = true
 
                     };
