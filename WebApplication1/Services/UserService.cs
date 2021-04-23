@@ -8,6 +8,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using wECommerce.Models;
 using wECommerce.Models.User;
 using wECommerce.Models.UserManager;
 
@@ -15,10 +16,16 @@ namespace wECommerce.Services
 {
     public class UserService : IUserService
     {
+<<<<<<< HEAD
         private UserManager<IdentityUser> userManager;
         private IConfiguration configuration;
 
         public UserService(UserManager<IdentityUser> userManager, IConfiguration configuration)
+=======
+        private UserManager<Customer> userManager;
+
+        public UserService(UserManager<Customer> userManager)
+>>>>>>> c2f4c7736bdfcfb3cc0eccb759daf4e80ba36ab0
         {
             this.userManager = userManager;
             this.configuration = configuration;
@@ -91,10 +98,14 @@ namespace wECommerce.Services
                     IsSuccesful = false
                 };
             }
-            var identityUser = new IdentityUser
+            var identityUser = new Customer
             {
                 Email = user.Email,
-                UserName = user.Email
+                UserName = user.Email,
+                LastName = user.LastName,
+                FirstName = user.FirstnName,
+                PhoneNumber = user.PhoneNumber
+                
             };
 
             var result = await userManager.CreateAsync(identityUser, user.Password);
