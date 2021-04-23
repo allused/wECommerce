@@ -17,6 +17,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WebApplication1.Models;
+using wECommerce.Services;
 
 namespace WebApplication1
 {
@@ -59,6 +60,7 @@ namespace WebApplication1
 
                     };
                 });
+            services.AddScoped<IUserService, UserService>();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
