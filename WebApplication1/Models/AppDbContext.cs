@@ -4,11 +4,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using wECommerce.Models;
 using wECommerce.Models.Store;
 
 namespace WebApplication1.Models
 {
-    public class AppDbContext : IdentityDbContext
+    public class AppDbContext : IdentityDbContext<Customer>
     {
         public AppDbContext(DbContextOptions<AppDbContext> options)
             : base(options)
