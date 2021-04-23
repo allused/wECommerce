@@ -3,15 +3,16 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using wECommerce.Models;
 using wECommerce.Models.User;
 
 namespace wECommerce.Services
 {
     public class UserService : IUserService
     {
-        private UserManager<IdentityUser> userManager;
+        private UserManager<Customer> userManager;
 
-        public UserService(UserManager<IdentityUser> userManager)
+        public UserService(UserManager<Customer> userManager)
         {
             this.userManager = userManager;
         }
@@ -31,10 +32,14 @@ namespace wECommerce.Services
                     IsSuccesful = false
                 };
             }
-            var identityUser = new IdentityUser
+            var identityUser = new Customer
             {
                 Email = user.Email,
-                UserName = user.Email
+                UserName = user.Email,
+                LastName = user.LastName,
+                FirstName = user.FirstnName,
+                PhoneNumber = user.PhoneNumber
+                
             };
 
             var result = await userManager.CreateAsync(identityUser, user.Password);
