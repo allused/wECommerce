@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using wECommerce.Models.User;
+using wECommerce.Models.UserManager;
 using wECommerce.Services;
 
 namespace wECommerce.Controllers.User
@@ -25,6 +26,23 @@ namespace wECommerce.Controllers.User
             if (ModelState.IsValid)
             {
                 var result = await userService.RegisterUserAsync(userModel);
+
+                if (result.IsSuccesful)
+                {
+                    return Ok(result);
+                }
+                return BadRequest(result);
+            }
+
+            return BadRequest("Some properties are invalid");
+        }
+
+        [HttpPost("login")]
+        public async Task<IActionResult> LoginAsync(LoginUser userModel)
+        {
+            if (ModelState.IsValid)
+            {
+                var result = await userService.LoginAsync(userModel);
 
                 if (result.IsSuccesful)
                 {
